@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuotesComponent } from './components/quotes/quotes.component';
+import { QuoteDetailComponent } from './components/quote-detail/quote-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, QuotesComponent],
+  declarations: [AppComponent, QuotesComponent, QuoteDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

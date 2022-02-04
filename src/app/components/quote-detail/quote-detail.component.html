@@ -1,0 +1,15 @@
+<div *ngIf="quote">
+  <h2>Selected quote detail</h2>
+  <div>Id: {{ quote.id }}</div>
+  <div>
+    <label for="content">Quote: </label>
+    <textarea
+      id="content"
+      [(ngModel)]="quote.content"
+      rows="4"
+      cols="30"
+      placeholder="Quote"
+    ></textarea>
+  </div>
+  <div>Author: {{ quote.author }}</div>
+</div>
