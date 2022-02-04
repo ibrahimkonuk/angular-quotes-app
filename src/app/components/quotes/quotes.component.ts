@@ -10,6 +10,10 @@ import { QUOTES } from 'src/app/mock-data/quotes';
 export class QuotesComponent implements OnInit{
 
   quotes = QUOTES;
+  selectedQuote?: Quote;
+
+  onSelect(quote: Quote): void{
+    this.selectedQuote = quote;
   }
 
   constructor() {}
