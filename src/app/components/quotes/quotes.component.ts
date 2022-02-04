@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Quote } from 'src/app/interfaces/quote';
-import { QUOTES } from 'src/app/mock-data/quotes';
+import { QuoteService } from 'src/app/services/quote.service';
 
 @Component({
   selector: 'app-quotes',
   templateUrl: './quotes.component.html',
   styleUrls: ['./quotes.component.scss'],
 })
-export class QuotesComponent implements OnInit{
-
-  quotes = QUOTES;
+export class QuotesComponent implements OnInit {
+  quotes: Quote[] = [];
   selectedQuote?: Quote;
 
-  onSelect(quote: Quote): void{
+  onSelect(quote: Quote): void {
     this.selectedQuote = quote;
   }
 
-  constructor() {}
+  constructor(private quoteService: QuoteService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getQuotes;
+  }
+
+  getQuotes(): void {
+    this.quoteService.getQuotes().subscribe((quotes) => (this.quotes = quotes));
+  }
 }
