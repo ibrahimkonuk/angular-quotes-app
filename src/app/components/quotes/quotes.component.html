@@ -3,5 +3,12 @@
   <li class="quote">
     <p class="content">{{ quote.content }}</p>
     <p class="author">- {{ quote.author }}</p>
+    <button
+      type="button"
+      [class.selected]="quote === selectedQuote"
+      (click)="onSelect(quote)"
+    >
+      Select
+    </button>
   </li>
 </ul>
