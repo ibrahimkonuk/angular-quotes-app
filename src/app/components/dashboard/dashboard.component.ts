@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuoteService } from 'src/app/services/quote.service';
 import { Quote } from 'src/app/interfaces/quote';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,19 @@ import { Quote } from 'src/app/interfaces/quote';
 })
 export class DashboardComponent implements OnInit {
   quotes: Quote[] = [];
+  selectedQuote?: Quote;
 
-  constructor(private quoteService: QuoteService) {}
+  onSelect(quote: Quote): void {
+    this.selectedQuote = quote;
+    this.messageService.add(
+      `QuotesComponent: Selected quote ${this.selectedQuote.id}`
+    );
+  }
+
+  constructor(
+    private quoteService: QuoteService,
+    public messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.getQuotes();
