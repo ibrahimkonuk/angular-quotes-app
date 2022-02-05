@@ -1,16 +1,40 @@
-<h2>Quotes</h2>
-<ul *ngFor="let quote of quotes" class="quotes">
-  <li class="quote">
-    <p class="content">{{ quote.content }}</p>
-    <p class="author">- {{ quote.author }}</p>
-    <button
-      type="button"
-      [class.selected]="quote === selectedQuote"
-      (click)="onSelect(quote)"
-    >
-      Select
-    </button>
-  </li>
-</ul>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Quotes</span>
+  </div>
+</nav>
+
+<div class="d-flex flex-row flex-wrap justify-content-around">
+  <div
+    *ngFor="let quote of quotes"
+    class="d-flex flex-row card quote-card shadow-sm border-0 m-2 p-2"
+  >
+    <div class="col-2">
+      <img
+        src="../../../assets/logo/quotes.png"
+        class="img-fluid rounded-start"
+        alt="Quote icon"
+      />
+    </div>
+    <div class="col-10">
+      <div class="card-body">
+        <p class="card-text">
+          {{ quote.content }}
+        </p>
+        <p class="card-text">
+          <small class="text-muted">- {{ quote.author }}</small>
+        </p>
+        <button
+          class="btn btn-outline-success"
+          type="button"
+          [class.selected]="quote === selectedQuote"
+          (click)="onSelect(quote)"
+        >
+          Select
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-quote-detail [quote]="selectedQuote"></app-quote-detail>
