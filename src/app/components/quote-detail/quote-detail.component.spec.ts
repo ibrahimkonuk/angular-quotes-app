@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { QuoteDetailComponent } from './quote-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('QuoteDetailComponent', () => {
   let component: QuoteDetailComponent;
@@ -8,9 +8,9 @@ describe('QuoteDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuoteDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [QuoteDetailComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
