@@ -18,5 +18,12 @@ export class QuoteDetailComponent implements OnInit {
     private location: Location
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getQuote();
+  }
+
+  getQuote(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.quoteService.getQuote(id).subscribe((quote) => (this.quote = quote));
+  }
 }
