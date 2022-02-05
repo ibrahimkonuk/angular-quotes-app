@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuotesComponent } from './components/quotes/quotes.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-const routes: Routes = [{ path: 'quotes', component: QuotesComponent }];
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'quotes', component: QuotesComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
