@@ -4,6 +4,7 @@
     *ngFor="let quote of quotes"
     class="d-flex flex-row card quote-card shadow-sm border-0 m-2 p-2"
     [class.selected]="quote === selectedQuote"
+    (click)="onSelect(quote)"
   >
     <div class="col-2">
       <img
@@ -20,13 +21,13 @@
         <p class="card-text">
           <small class="text-muted">- {{ quote.author }}</small>
         </p>
-        <button
+        <a
           class="btn btn-outline-dark"
           type="button"
-          (click)="onSelect(quote)"
+          routerLink="/detail/{{ quote.id }}"
         >
           Select
-        </button>
+        </a>
       </div>
     </div>
   </div>
