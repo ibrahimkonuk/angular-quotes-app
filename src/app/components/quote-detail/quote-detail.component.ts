@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Quote } from 'src/app/interfaces/quote';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { QuoteService } from 'src/app/services/quote.service';
 
 @Component({
   selector: 'app-quote-detail',
@@ -9,7 +12,11 @@ import { Quote } from 'src/app/interfaces/quote';
 export class QuoteDetailComponent implements OnInit {
   @Input() quote?: Quote;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private quoteService: QuoteService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {}
 }
