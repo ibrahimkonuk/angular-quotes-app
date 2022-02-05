@@ -14,5 +14,10 @@ export class QuoteService {
     return quotes;
   }
 
+  getQuote(id: number): Observable<Quote> {
+    const quote = QUOTES.find((quote) => quote.id === id)!;
+    this.messageService.add(`QuoteService: fetched quote id=${id}`);
+    return of(quote);
+  }
   constructor(private messageService: MessageService) {}
 }
