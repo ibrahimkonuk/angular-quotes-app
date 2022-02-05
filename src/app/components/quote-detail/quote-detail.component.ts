@@ -26,4 +26,8 @@ export class QuoteDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.quoteService.getQuote(id).subscribe((quote) => (this.quote = quote));
   }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
