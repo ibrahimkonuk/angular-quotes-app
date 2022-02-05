@@ -1,9 +1,20 @@
-<div *ngIf="messageService.messages.length">
-  <h2>Messages</h2>
-  <button type="button" class="clear" (click)="messageService.clear()">
-    Clear
-  </button>
-  <div *ngFor="let message of messageService.messages">
-    {{ message }}
+<div class="d-flex justify-content-center">
+  <div *ngIf="messageService.messages.length" class="message-card card w-75">
+    <div class="card-header">Messages</div>
+    <ul class="list-group list-group-flush">
+      <li
+        *ngFor="let message of messageService.messages"
+        class="list-group-item"
+      >
+        {{ message }}
+      </li>
+    </ul>
+    <button
+      type="button"
+      class="btn message shadow-sm border-0 m-2 p-2 clear w-25 text-center"
+      (click)="messageService.clear()"
+    >
+      Clear
+    </button>
   </div>
 </div>
