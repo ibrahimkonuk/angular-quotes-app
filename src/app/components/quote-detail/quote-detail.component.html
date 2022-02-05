@@ -1,15 +1,22 @@
-<div *ngIf="quote">
-  <h2>Selected quote detail</h2>
-  <div>Id: {{ quote.id }}</div>
-  <div>
-    <label for="content">Quote: </label>
-    <textarea
-      id="content"
-      [(ngModel)]="quote.content"
-      rows="4"
-      cols="30"
-      placeholder="Quote"
-    ></textarea>
+<div *ngIf="quote" class="d-flex flex-row flex-wrap justify-content-around">
+  <div class="d-flex flex-row card quote-card shadow-sm border-0 m-2 p-2 w-75">
+    <div class="w-100">
+      <div class="card-body">
+        <h5 class="card-title">Edit selected quote</h5>
+        <div class="form-floating">
+          <textarea
+            class="form-control quote-textarea"
+            [(ngModel)]="quote.content"
+            placeholder="Quote"
+            id="floatingTextarea"
+            >{{ quote.content }}</textarea
+          >
+          <label for="floatingTextarea">Edit quote</label>
+        </div>
+        <p class="card-text">
+          <small class="text-muted">- {{ quote.author }}</small>
+        </p>
+      </div>
+    </div>
   </div>
-  <div>Author: {{ quote.author }}</div>
 </div>
