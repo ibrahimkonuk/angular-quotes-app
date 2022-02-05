@@ -1,8 +1,33 @@
-<h2>Top Quotes</h2>
-<div class="quotes-menu">
-  <div *ngFor="let quote of quotes" class="quote">
-    <a>
-      {{ quote.content }}
-    </a>
+<h3 class="m-2 p-2">Top Quotes</h3>
+<div class="d-flex flex-row flex-wrap justify-content-around">
+  <div
+    *ngFor="let quote of quotes"
+    class="d-flex flex-row card quote-card shadow-sm border-0 m-2 p-2"
+    [class.selected]="quote === selectedQuote"
+  >
+    <div class="col-2">
+      <img
+        src="../../../assets/logo/quotes.png"
+        class="img-fluid rounded-start"
+        alt="Quote icon"
+      />
+    </div>
+    <div class="col-10">
+      <div class="card-body">
+        <p class="card-text">
+          {{ quote.content }}
+        </p>
+        <p class="card-text">
+          <small class="text-muted">- {{ quote.author }}</small>
+        </p>
+        <button
+          class="btn btn-outline-dark"
+          type="button"
+          (click)="onSelect(quote)"
+        >
+          Select
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,15 @@
+@media (min-width: 576px) and (max-width: 1399.98px) {
+  .quote-card {
+    max-width: 45%;
+  }
+}
+
+@media (min-width: 1399.98px) {
+  .quote-card {
+    max-width: 35%;
+  }
+}
+
+.selected {
+  background-color: aliceblue;
+}
