@@ -10,14 +10,20 @@ import { MessageService } from './message.service';
 export class QuoteService {
   getQuotes(): Observable<Quote[]> {
     const quotes = of(QUOTES);
-    this.messageService.add('QuoteService: fetched quotes');
+    this.log('fetched quotes');
     return quotes;
   }
 
   getQuote(id: number): Observable<Quote> {
     const quote = QUOTES.find((quote) => quote.id === id)!;
-    this.messageService.add(`QuoteService: fetched quote id=${id}`);
+    this.log(`fetched quote id=${id}`);
     return of(quote);
   }
   constructor(private messageService: MessageService) {}
+
+  /** Log a QuoteService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`QuoteService: ${message}`);
+  }
+
 }
