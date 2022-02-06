@@ -8,6 +8,7 @@ import { QuotesComponent } from './components/quotes/quotes.component';
 import { QuoteDetailComponent } from './components/quote-detail/quote-detail.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MessagesComponent,
     DashboardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
