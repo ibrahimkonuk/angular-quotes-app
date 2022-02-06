@@ -3,15 +3,16 @@ import { Observable, of } from 'rxjs';
 import { Quote } from '../interfaces/quote';
 import { QUOTES } from '../mock-data/quotes';
 import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuoteService {
+  private quotesUrl = 'api/quotes'; // URL to web api
+
   getQuotes(): Observable<Quote[]> {
-    const quotes = of(QUOTES);
-    this.log('fetched quotes');
-    return quotes;
+    return this.http.get<Quote[]>(this.quotesUrl);
   }
 
   getQuote(id: number): Observable<Quote> {
@@ -26,4 +27,8 @@ export class QuoteService {
     this.messageService.add(`QuoteService: ${message}`);
   }
 
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient
+  ) {}
 }
