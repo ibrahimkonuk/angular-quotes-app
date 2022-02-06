@@ -20,9 +20,11 @@ export class QuoteService {
   }
 
   getQuote(id: number): Observable<Quote> {
-    const quote = QUOTES.find((quote) => quote.id === id)!;
-    this.log(`fetched quote id=${id}`);
-    return of(quote);
+    const url = `${this.quotesUrl}/${id}`;
+    return this.http.get<Quote>(url).pipe(
+      tap(() => this.log(`fetched quote=${id}`)),
+      catchError(this.handleError<Quote>('getQuote'))
+    );
   }
 
   /** Log a QuoteService message with the MessageService */
