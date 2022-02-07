@@ -52,6 +52,20 @@ export class QuoteService {
     );
   }
 
+  searchQuotes(term: string): Observable<Quote[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Quote[]>(`${this.quotesUrl}/?author=${term}`).pipe(
+      tap((quotes) =>
+        quotes.length
+          ? this.log(`quote(s) from ${term} found`)
+          : this.log(`no quote(s) from ${term} found`)
+      ),
+      catchError(this.handleError<Quote[]>(`searchQuotes`, []))
+    );
+  }
+
   /** Log a QuoteService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`QuoteService: ${message}`);
