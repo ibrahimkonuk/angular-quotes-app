@@ -37,6 +37,13 @@ export class QuoteService {
     );
   }
 
+  addQuote(quote: Quote): Observable<Quote> {
+    return this.http.post<Quote>(this.quotesUrl, quote, this.httpOptions).pipe(
+      tap((newQuote: Quote) => this.log(`added quote id=${newQuote.id}`)),
+      catchError(this.handleError<Quote>('addQuote'))
+    );
+  }
+
   /** Log a QuoteService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`QuoteService: ${message}`);

@@ -1,11 +1,13 @@
 @media (min-width: 576px) and (max-width: 1399.98px) {
-  .quote-card {
+  .quote-card,
+  .quote-form {
     max-width: 45%;
   }
 }
 
 @media (min-width: 1399.98px) {
-  .quote-card {
+  .quote-card,
+  .quote-form {
     max-width: 35%;
   }
 }

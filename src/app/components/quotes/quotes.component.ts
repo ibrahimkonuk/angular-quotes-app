@@ -31,4 +31,22 @@ export class QuotesComponent implements OnInit {
   getQuotes(): void {
     this.quoteService.getQuotes().subscribe((quotes) => (this.quotes = quotes));
   }
+
+  add(content: string, author: string) {
+    content = content.trim();
+    author = author.trim();
+    let id;
+    this.quotes.length > 0
+      ? (id = Math.max(...this.quotes.map((q: Quote) => q.id)) + 1)
+      : (id = 5);
+
+    let newQuote: Quote = {
+      id,
+      content,
+      author,
+    };
+
+    if (!content || !author) return;
+    this.quoteService.addQuote(newQuote).subscribe((q) => this.quotes.push(q));
+  }
 }
