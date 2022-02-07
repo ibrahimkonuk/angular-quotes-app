@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { QuoteSearchComponent } from './components/quote-search/quote-search.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     QuoteDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    QuoteSearchComponent,
     TruncatePipe,
   ],
   imports: [

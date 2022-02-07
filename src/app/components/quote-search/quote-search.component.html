@@ -1,0 +1,34 @@
+<form class="d-flex">
+  <input
+    #term
+    class="form-control me-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <div class="dropdown">
+    <button
+      (click)="search(term.value)"
+      class="btn btn-outline-success dropdown-toggle"
+      type="submit"
+      id="search-dropdown-menu"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Search
+    </button>
+    <div
+      *ngIf="searchResult$"
+      class="dropdown-menu dropdown-menu-end"
+      aria-labelledby="search-dropdown-menu"
+    >
+      <a
+        *ngFor="let s of searchResult$ | async"
+        routerLink="/detail/{{ s.id }}"
+        class="dropdown-item"
+      >
+        <li>{{ s.id }} - {{ s.content | truncate: 30 }}</li>
+      </a>
+    </div>
+  </div>
+</form>
