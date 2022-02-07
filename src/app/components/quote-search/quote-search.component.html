@@ -1,21 +1,21 @@
 <form class="d-flex">
   <input
     #term
-    class="form-control me-2"
+    class="form-control me-2 border-0"
     type="search"
     placeholder="Search"
     aria-label="Search"
   />
-  <div class="dropdown">
+  <div class="dropdown my-auto">
     <button
+      class="btn"
       (click)="search(term.value)"
-      class="btn btn-outline-success dropdown-toggle"
       type="submit"
       id="search-dropdown-menu"
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      Search
+      <span class="material-icons search-icon"> search </span>
     </button>
     <div
       *ngIf="searchResult$"
