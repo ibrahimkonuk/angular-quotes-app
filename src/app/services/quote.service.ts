@@ -11,6 +11,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class QuoteService {
   private quotesUrl = 'api/quotes'; // URL to web api
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   getQuotes(): Observable<Quote[]> {
     return this.http.get<Quote[]>(this.quotesUrl).pipe(
@@ -24,6 +27,13 @@ export class QuoteService {
     return this.http.get<Quote>(url).pipe(
       tap(() => this.log(`fetched quote=${id}`)),
       catchError(this.handleError<Quote>('getQuote'))
+    );
+  }
+
+  updateQuote(quote: Quote): Observable<any> {
+    return this.http.put<Quote>(this.quotesUrl, quote, this.httpOptions).pipe(
+      tap(() => this.log(`Updated quote=${quote.id}`)),
+      catchError(this.handleError<any>('updateQuote'))
     );
   }
 

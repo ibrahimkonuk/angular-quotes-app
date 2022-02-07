@@ -27,6 +27,12 @@ export class QuoteDetailComponent implements OnInit {
     this.quoteService.getQuote(id).subscribe((quote) => (this.quote = quote));
   }
 
+  save(): void {
+    if (this.quote) {
+      this.quoteService.updateQuote(this.quote).subscribe(() => this.goBack());
+    }
+  }
+
   goBack(): void {
     this.location.back();
   }
