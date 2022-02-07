@@ -44,6 +44,14 @@ export class QuoteService {
     );
   }
 
+  deleteQuote(id: number): Observable<Quote> {
+    const url = `${this.quotesUrl}/${id}`;
+    return this.http.delete<Quote>(url, this.httpOptions).pipe(
+      tap(() => this.log(`deleted quote id=${id}`)),
+      catchError(this.handleError<Quote>('deleteQuote'))
+    );
+  }
+
   /** Log a QuoteService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`QuoteService: ${message}`);

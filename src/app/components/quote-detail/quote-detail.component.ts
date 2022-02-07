@@ -33,6 +33,11 @@ export class QuoteDetailComponent implements OnInit {
     }
   }
 
+  delete(id: number): void {
+    this.quoteService.deleteQuote(id).subscribe();
+    this.goBack();
+  }
+
   goBack(): void {
     this.location.back();
   }
